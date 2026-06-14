@@ -1,0 +1,224 @@
+import React from 'react';
+import { Button, Card, Badge, Icon, Eyebrow } from './DesignSystem.js';
+import { SectionHead } from './Parts.jsx';
+
+function HomeHero({ go }) {
+  return (
+    <section style={{
+      position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center',
+      overflow: 'hidden',
+    }}>
+      <div aria-hidden="true" style={{
+        position: 'absolute', inset: 0,
+        background:
+          'radial-gradient(120% 90% at 78% 20%, rgba(201,168,76,0.18) 0%, rgba(201,168,76,0) 42%),' +
+          'radial-gradient(90% 80% at 10% 90%, rgba(122,98,40,0.22) 0%, rgba(10,10,10,0) 55%),' +
+          'linear-gradient(180deg, #111 0%, #0a0a0a 60%, #0a0a0a 100%)',
+      }} />
+      <div aria-hidden="true" style={{
+        position: 'absolute', inset: 0, opacity: 0.5,
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+        backgroundSize: '64px 64px',
+        maskImage: 'radial-gradient(120% 80% at 50% 40%, #000 30%, transparent 80%)',
+      }} />
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 55%, rgba(10,10,10,0.1) 100%)' }} />
+
+      <div style={{
+        position: 'absolute', top: 92, right: 24, zIndex: 2,
+        display: 'inline-flex', alignItems: 'center', gap: 8,
+        border: '1px dashed var(--line-strong)', padding: '6px 12px',
+        fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)',
+        background: 'rgba(10,10,10,0.5)',
+      }}>
+        <span style={{ width: 7, height: 7, borderRadius: 0, background: 'var(--gold)' }} />
+        Video background slot
+      </div>
+
+      <div className="ilm-container" style={{ position: 'relative', zIndex: 2, paddingTop: 100, paddingBottom: 60 }}>
+        <Eyebrow>Licensed Auto Broker · Jamaica, Queens</Eyebrow>
+        <h1 style={{
+          fontSize: 'clamp(40px, 8vw, 80px)', lineHeight: 1.02, letterSpacing: '-0.02em',
+          marginTop: 'var(--space-24)', maxWidth: 14 + 'ch',
+        }}>
+          Skip the Dealership.<br /><span style={{ color: 'var(--gold)' }}>We Get Your Car.</span>
+        </h1>
+        <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-1)', maxWidth: 540, marginTop: 'var(--space-24)' }}>
+          We work for the buyer, not the lot. Tell us the car you want — we source it,
+          negotiate the price, and deliver it to your door.
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-16)', marginTop: 'var(--space-40)' }}>
+          <Button variant="primary" size="lg" onClick={() => go('contact')}>Get a Free Quote</Button>
+          <a href="tel:7182903821" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, color: 'var(--text-1)', fontWeight: 600, fontSize: 18 }}>
+            <span style={{ color: 'var(--gold)' }}><Icon name="phone" size={18} /></span>(718) 290-3821
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const TRUST = [
+  ['shield', 'Licensed Auto Broker'],
+  ['map-pin', 'Jamaica, Queens'],
+  ['car', 'All Makes & Models'],
+  ['handshake', 'Free Consultation'],
+];
+
+function TrustBar() {
+  return (
+    <div style={{ background: 'var(--surface-1)', borderBlock: '1px solid var(--border-1)' }}>
+      <div className="ilm-container">
+        <div className="ilm-trust-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+          {TRUST.map(([icon, label], i) => (
+            <div key={label} style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-16)',
+              paddingBlock: 'var(--space-24)', paddingInline: 'var(--space-16)',
+              borderLeft: i === 0 ? 'none' : '1px solid var(--border-1)',
+            }}>
+              <span style={{ color: 'var(--gold)' }}><Icon name={icon} size={22} /></span>
+              <span style={{ color: 'var(--text-1)', fontWeight: 600, fontSize: 14, letterSpacing: '0.04em' }}>{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const STEPS = [
+  ['01', 'Tell us what you want', 'Make, model, budget, timeline. One conversation — by phone, text, or our quote form.'],
+  ['02', 'We source & negotiate', 'We tap dealer-direct channels across the region and negotiate the price down for you.'],
+  ['03', 'Sign & receive delivery', 'Review the numbers, sign the paperwork, and we deliver the car to your door.'],
+];
+
+function HowPreview({ go }) {
+  return (
+    <section className="ilm-section">
+      <div className="ilm-container">
+        <SectionHead
+          eyebrow="How It Works"
+          title="Three steps to your next car"
+          sub="No showroom games, no pressure. Here's exactly how the process runs."
+        />
+        <div className="ilm-3col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-24)' }}>
+          {STEPS.map(([n, t, d]) => (
+            <Card key={n} interactive accentTop padding="var(--space-32)">
+              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 44, color: 'var(--gold)', lineHeight: 1 }}>{n}</div>
+              <h3 style={{ fontSize: 22, marginTop: 'var(--space-16)' }}>{t}</h3>
+              <p style={{ color: 'var(--text-2)', marginTop: 'var(--space-8)' }}>{d}</p>
+            </Card>
+          ))}
+        </div>
+        <div style={{ marginTop: 'var(--space-32)' }}>
+          <Button variant="secondary" onClick={() => go('how')}>Learn More <Icon name="arrow-right" size={16} /></Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const SERVICES = [
+  ['car', 'New Car Leasing', 'Any make or model, sourced and negotiated at dealer-direct pricing.'],
+  ['dollar', 'Vehicle Financing', 'Competitive loan options arranged through our lender network.'],
+  ['key', 'Early Lease Exit', "Get out of your current lease early — we'll find the cleanest way out."],
+  ['users', 'Fleet Services', 'Multiple vehicles for your business, handled as one simple order.'],
+];
+
+function ServicesPreview({ go }) {
+  return (
+    <section className="ilm-section" style={{ background: 'var(--surface-1)', borderBlock: '1px solid var(--border-1)' }}>
+      <div className="ilm-container">
+        <SectionHead eyebrow="What We Do" title="Full-service, start to finish" />
+        <div className="ilm-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-16)' }}>
+          {SERVICES.map(([icon, t, d]) => (
+            <Card key={t} interactive padding="var(--space-32)" style={{ background: 'var(--surface-2)', display: 'flex', gap: 'var(--space-24)' }}>
+              <span style={{ color: 'var(--gold)', flexShrink: 0 }}><Icon name={icon} size={30} /></span>
+              <div>
+                <h3 style={{ fontSize: 20 }}>{t}</h3>
+                <p style={{ color: 'var(--text-2)', marginTop: 6 }}>{d}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+        <div style={{ marginTop: 'var(--space-32)' }}>
+          <Button variant="secondary" onClick={() => go('services')}>Explore Services <Icon name="arrow-right" size={16} /></Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OwnerStrip() {
+  return (
+    <section className="ilm-section">
+      <div className="ilm-container">
+        <div className="ilm-owner" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'var(--space-48)', alignItems: 'center' }}>
+          <div style={{
+            width: '100%', aspectRatio: '4 / 5',
+            background: 'var(--surface-1)', border: '1px dashed var(--line-strong)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: 'var(--text-3)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
+          }}>
+            Owner photo
+          </div>
+          <div>
+            <Eyebrow>Who You're Working With</Eyebrow>
+            <h2 style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', marginTop: 'var(--space-16)' }}>
+              A local broker who answers the phone.
+            </h2>
+            <p style={{ color: 'var(--text-2)', fontSize: 'var(--fs-lead)', marginTop: 'var(--space-16)', maxWidth: 520 }}>
+              We're not a call center. You deal directly with the person negotiating your car —
+              from the first quote to the keys in your hand. That's how it should be.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', marginTop: 'var(--space-24)', flexWrap: 'wrap' }}>
+              <Badge>Dealer-Direct Pricing</Badge>
+              <Badge variant="outline">Transparent, Always</Badge>
+              <Badge variant="outline">Any Make & Model</Badge>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTABand({ go }) {
+  return (
+    <section style={{ background: 'var(--gold)' }}>
+      <div className="ilm-container" style={{ paddingBlock: 'var(--space-56)', display: 'flex', flexWrap: 'wrap', gap: 'var(--space-24)', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div>
+          <h2 style={{ color: 'var(--black-pure)', fontSize: 'clamp(26px, 3.2vw, 38px)' }}>Ready to skip the lot?</h2>
+          <p style={{ color: 'rgba(0,0,0,0.7)', fontSize: 'var(--fs-lead)', marginTop: 8 }}>Free consultation. No obligation. Tell us what you're after.</p>
+        </div>
+        <div style={{ display: 'flex', gap: 'var(--space-16)', flexWrap: 'wrap' }}>
+          <button onClick={() => go('contact')} style={{
+            background: 'var(--black-pure)', color: 'var(--gold)', border: 0, cursor: 'pointer',
+            padding: '18px 34px', fontWeight: 600, fontSize: 15, letterSpacing: '0.08em', textTransform: 'uppercase',
+            fontFamily: 'var(--font-body)',
+          }}>Get a Free Quote</button>
+          <a href="tel:7182903821" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10, color: 'var(--black-pure)', fontWeight: 700, fontSize: 18,
+            padding: '18px 4px',
+          }}>
+            <Icon name="phone" size={18} />(718) 290-3821
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Home({ go }) {
+  return (
+    <>
+      <HomeHero go={go} />
+      <TrustBar />
+      <HowPreview go={go} />
+      <ServicesPreview go={go} />
+      <OwnerStrip />
+      <CTABand go={go} />
+    </>
+  );
+}
+
+export default Home;
