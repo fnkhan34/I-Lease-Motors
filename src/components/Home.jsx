@@ -8,6 +8,7 @@ function HomeHero({ go }) {
       position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center',
       overflow: 'hidden',
     }}>
+      {/* Gradient fallback — visible while video loads or on reduced-motion */}
       <div aria-hidden="true" style={{
         position: 'absolute', inset: 0,
         background:
@@ -15,26 +16,32 @@ function HomeHero({ go }) {
           'radial-gradient(90% 80% at 10% 90%, rgba(122,98,40,0.22) 0%, rgba(10,10,10,0) 55%),' +
           'linear-gradient(180deg, #111 0%, #0a0a0a 60%, #0a0a0a 100%)',
       }} />
+
+      {/* Background video */}
+      <video
+        aria-hidden="true"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="hero-video"
+        style={{
+          position: 'absolute', inset: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          zIndex: 1,
+        }}
+      >
+        <source src="https://res.cloudinary.com/dsnifbbrw/video/upload/q_auto/f_auto/v1781480122/5309354-hd_1920_1080_25fps_zairgm.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark legibility scrim over video */}
       <div aria-hidden="true" style={{
-        position: 'absolute', inset: 0, opacity: 0.5,
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
-        backgroundSize: '64px 64px',
-        maskImage: 'radial-gradient(120% 80% at 50% 40%, #000 30%, transparent 80%)',
+        position: 'absolute', inset: 0, zIndex: 2,
+        background: 'linear-gradient(90deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.5) 55%, rgba(10,10,10,0.2) 100%)',
       }} />
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 55%, rgba(10,10,10,0.1) 100%)' }} />
 
-      <div style={{
-        position: 'absolute', top: 92, right: 24, zIndex: 2,
-        display: 'inline-flex', alignItems: 'center', gap: 8,
-        border: '1px dashed var(--line-strong)', padding: '6px 12px',
-        fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)',
-        background: 'rgba(10,10,10,0.5)',
-      }}>
-        <span style={{ width: 7, height: 7, borderRadius: 0, background: 'var(--gold)' }} />
-        Video background slot
-      </div>
-
-      <div className="ilm-container" style={{ position: 'relative', zIndex: 2, paddingTop: 100, paddingBottom: 60 }}>
+      <div className="ilm-container" style={{ position: 'relative', zIndex: 3, paddingTop: 100, paddingBottom: 60 }}>
         <Eyebrow>Licensed Auto Broker · Jamaica, Queens</Eyebrow>
         <h1 style={{
           fontSize: 'clamp(40px, 8vw, 80px)', lineHeight: 1.02, letterSpacing: '-0.02em',
