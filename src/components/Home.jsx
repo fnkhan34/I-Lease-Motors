@@ -24,6 +24,8 @@ function HomeHero({ go }) {
         muted
         loop
         playsInline
+        preload="auto"
+        poster="https://res.cloudinary.com/dsnifbbrw/video/upload/q_auto,f_jpg,so_0/v1781480122/5309354-hd_1920_1080_25fps_zairgm.jpg"
         className="hero-video"
         style={{
           position: 'absolute', inset: 0,
@@ -36,7 +38,7 @@ function HomeHero({ go }) {
       </video>
 
       {/* Dark legibility scrim over video */}
-      <div aria-hidden="true" style={{
+      <div aria-hidden="true" className="hero-scrim" style={{
         position: 'absolute', inset: 0, zIndex: 2,
         background: 'linear-gradient(90deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.5) 55%, rgba(10,10,10,0.2) 100%)',
       }} />
