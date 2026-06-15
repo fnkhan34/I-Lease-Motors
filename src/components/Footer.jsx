@@ -74,18 +74,21 @@ function StickyCTA({ go }) {
       display: 'none',
       gridTemplateColumns: '1fr 1fr',
       borderTop: '1px solid var(--border-2)',
+      boxShadow: '0 -4px 24px rgba(0,0,0,0.55)',
     }}>
       <a href="tel:7182903821" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
         background: 'var(--surface-2)', color: 'var(--text-1)',
-        height: 56, fontWeight: 600, fontSize: 14, letterSpacing: '0.06em', textTransform: 'uppercase',
+        height: 60, fontWeight: 600, fontSize: 15, letterSpacing: '0.06em', textTransform: 'uppercase',
+        paddingInline: 16,
       }}>
         <span style={{ color: 'var(--gold)' }}><Icon name="phone" size={18} /></span>Call Now
       </a>
       <button onClick={() => go('contact')} style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
         background: 'var(--gold)', color: 'var(--accent-on)', border: 0, cursor: 'pointer',
-        height: 56, fontWeight: 600, fontSize: 14, letterSpacing: '0.06em', textTransform: 'uppercase',
+        height: 60, fontWeight: 600, fontSize: 15, letterSpacing: '0.06em', textTransform: 'uppercase',
+        paddingInline: 16, fontFamily: 'var(--font-body)',
       }}>
         Get a Quote
       </button>

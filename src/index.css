@@ -196,7 +196,7 @@ html { scroll-behavior: smooth; }
   .ilm-svc-row > div { order: 0 !important; border: none !important; }
   .ilm-footer-grid { grid-template-columns: 1fr !important; }
   .ilm-sticky-cta { display: grid !important; }
-  main { padding-bottom: 56px; }
+  main { padding-bottom: 60px; }
 }
 
 @media (max-width: 576px) {
