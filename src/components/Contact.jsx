@@ -39,7 +39,7 @@ function Contact() {
               ))}
               <iframe
                 title="I Lease Motors location"
-                src={`https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_KEY}&q=138-13+87th+Ave,Jamaica,NY+11435`}
+                src="https://www.google.com/maps?q=138-13+87th+Ave,Jamaica,NY+11435&output=embed"
                 width="100%"
                 height="200"
                 style={{ border: 0, display: 'block' }}
