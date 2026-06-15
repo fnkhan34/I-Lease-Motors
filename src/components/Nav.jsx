@@ -31,7 +31,7 @@ function Nav({ page, go, scrolled }) {
           height: 76,
         }}>
           <a onClick={() => go('home')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <img src="/logo.png" alt="I Lease Motors" style={{ height: 30, width: 'auto' }} />
+            <img src="/logo.png" alt="I Lease Motors" style={{ height: 48, width: 'auto' }} />
           </a>
 
           <nav className="ilm-desktop-nav" style={{ display: 'flex', gap: 'var(--space-32)', marginLeft: 'var(--space-24)' }}>
@@ -84,7 +84,7 @@ function Nav({ page, go, scrolled }) {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 28 }}>
-          <img src="/logo.png" alt="I Lease Motors" style={{ height: 26 }} />
+          <img src="/logo.png" alt="I Lease Motors" style={{ height: 40 }} />
           <button onClick={() => setOpen(false)} aria-label="Close menu"
             style={{ background: 'transparent', border: 0, color: 'var(--text-1)', cursor: 'pointer' }}>
             <Icon name="x" size={26} />
