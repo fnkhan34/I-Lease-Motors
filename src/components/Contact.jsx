@@ -37,14 +37,16 @@ function Contact() {
                   </div>
                 </div>
               ))}
-              <div style={{
-                background: 'var(--surface-1)', border: '1px dashed var(--line-strong)',
-                height: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10,
-                color: 'var(--text-3)',
-              }}>
-                <Icon name="map-pin" size={28} />
-                <span style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' }}>Map embed slot</span>
-              </div>
+              <iframe
+                title="I Lease Motors location"
+                src={`https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_KEY}&q=138-13+87th+Ave,Jamaica,NY+11435`}
+                width="100%"
+                height="200"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
 
             <div style={{ background: 'var(--surface-1)', border: '1px solid var(--border-1)', padding: 'var(--space-40)' }}>
