@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from './DesignSystem.js';
+import SocialLinks from './SocialLinks.jsx';
 
 function Footer({ go }) {
   const col = (heading, links) => (
@@ -55,8 +56,9 @@ function Footer({ go }) {
         </div>
       </div>
       <div style={{ borderTop: '1px solid var(--border-1)' }}>
-        <div className="ilm-container" style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'space-between', paddingBlock: 'var(--space-24)', fontSize: 12, color: 'var(--text-3)' }}>
+        <div className="ilm-container" style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'space-between', paddingBlock: 'var(--space-24)', fontSize: 12, color: 'var(--text-3)' }}>
           <span>© 2026 I Lease Motors. All rights reserved.</span>
+          <SocialLinks />
           <span style={{ display: 'inline-flex', gap: 'var(--space-24)' }}>
             <a style={{ cursor: 'pointer' }}>Privacy</a>
             <a style={{ cursor: 'pointer' }}>Terms</a>

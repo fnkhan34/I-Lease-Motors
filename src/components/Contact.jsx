@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Icon, Input, Textarea, Select } from './DesignSystem.js';
 import { PageHero } from './Parts.jsx';
+import SocialLinks from './SocialLinks.jsx';
 
 const DETAILS = [
   ['phone', 'Call or text', '(718) 290-3821', 'tel:7182903821'],
@@ -47,6 +48,7 @@ function Contact() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+              <SocialLinks label />
             </div>
 
             <div style={{ background: 'var(--surface-1)', border: '1px solid var(--border-1)', padding: 'var(--space-40)' }}>
