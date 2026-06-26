@@ -25,6 +25,8 @@ function HomeHero({ go }) {
         loop
         playsInline
         preload="auto"
+        disablePictureInPicture
+        x-webkit-airplay="deny"
         poster="https://res.cloudinary.com/dsnifbbrw/video/upload/q_auto,f_jpg,so_0/v1781480122/5309354-hd_1920_1080_25fps_zairgm.jpg"
         className="hero-video"
         style={{
@@ -32,6 +34,7 @@ function HomeHero({ go }) {
           width: '100%', height: '100%',
           objectFit: 'cover',
           zIndex: 1,
+          pointerEvents: 'none',
         }}
       >
         <source src="https://res.cloudinary.com/dsnifbbrw/video/upload/q_auto/f_auto/v1781480122/5309354-hd_1920_1080_25fps_zairgm.mp4" type="video/mp4" />
