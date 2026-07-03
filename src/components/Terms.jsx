@@ -50,7 +50,7 @@ function Terms() {
       <PageHero
         eyebrow="Legal"
         title="Terms of Use"
-        sub="Last updated: July 2025. These terms govern your use of the I Lease Motors website and brokerage services."
+        sub="Last updated: July 2026. These terms govern your use of the I Lease Motors website and brokerage services."
       />
       <section className="ilm-section">
         <div className="ilm-container" style={{ maxWidth: 780 }}>
