@@ -54,8 +54,12 @@ function Footer({ go }) {
           <span>© 2026 I Lease Motors. All rights reserved.</span>
           <SocialLinks />
           <span style={{ display: 'inline-flex', gap: 'var(--space-24)' }}>
-            <a style={{ cursor: 'pointer' }}>Privacy</a>
-            <a style={{ cursor: 'pointer' }}>Terms</a>
+            <a onClick={() => go('privacy')} style={{ cursor: 'pointer', transition: 'color var(--dur) var(--ease-out)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}>Privacy</a>
+            <a onClick={() => go('terms')} style={{ cursor: 'pointer', transition: 'color var(--dur) var(--ease-out)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = ''; }}>Terms</a>
           </span>
         </div>
       </div>

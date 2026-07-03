@@ -7,6 +7,8 @@ import Services from './components/Services.jsx';
 import WhyUs from './components/WhyUs.jsx';
 import Reviews from './components/Reviews.jsx';
 import Contact from './components/Contact.jsx';
+import Privacy from './components/Privacy.jsx';
+import Terms from './components/Terms.jsx';
 
 const PAGES = {
   home: Home,
@@ -15,6 +17,8 @@ const PAGES = {
   why: WhyUs,
   reviews: Reviews,
   contact: Contact,
+  privacy: Privacy,
+  terms: Terms,
 };
 
 function App() {
