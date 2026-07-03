@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Badge, Icon, Eyebrow } from './DesignSystem.js';
+import { Button, Card, Icon, Eyebrow } from './DesignSystem.js';
 import { SectionHead } from './Parts.jsx';
 
 function HomeHero({ go }) {
@@ -160,34 +160,52 @@ function ServicesPreview({ go }) {
   );
 }
 
-function OwnerStrip() {
+const DEALERSHIP_CONS = [
+  'Negotiates against you',
+  'Hidden dealer fees',
+  'One lot, one inventory',
+  'Sales quota pressure',
+];
+
+const ILM_PROS = [
+  'Negotiates for you',
+  'Transparent pricing, no surprises',
+  'Any make, any model, any dealer',
+  'No pressure, no obligation',
+];
+
+function ComparisonStrip() {
   return (
     <section className="ilm-section">
       <div className="ilm-container">
-        <div className="ilm-owner" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'var(--space-48)', alignItems: 'center' }}>
-          <div style={{
-            width: '100%', aspectRatio: '4 / 5',
-            background: 'var(--surface-1)', border: '1px dashed var(--line-strong)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: 'var(--text-3)', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase',
-          }}>
-            Owner photo
-          </div>
-          <div>
-            <Eyebrow>Who You're Working With</Eyebrow>
-            <h2 style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', marginTop: 'var(--space-16)' }}>
-              A local broker who answers the phone.
-            </h2>
-            <p style={{ color: 'var(--text-2)', fontSize: 'var(--fs-lead)', marginTop: 'var(--space-16)', maxWidth: 520 }}>
-              We're not a call center. You deal directly with the person negotiating your car —
-              from the first quote to the keys in your hand. That's how it should be.
-            </p>
-            <div style={{ display: 'flex', gap: '12px', marginTop: 'var(--space-24)', flexWrap: 'wrap' }}>
-              <Badge>Dealer-Direct Pricing</Badge>
-              <Badge variant="outline">Transparent, Always</Badge>
-              <Badge variant="outline">Any Make & Model</Badge>
+        <SectionHead
+          eyebrow="The Difference"
+          title="Whose side is your dealer really on?"
+          align="center"
+        />
+        <div className="ilm-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-24)' }}>
+          <Card padding="var(--space-32)">
+            <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: 'var(--space-24)' }}>The Dealership</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
+              {DEALERSHIP_CONS.map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-16)' }}>
+                  <span style={{ color: 'var(--text-3)', flexShrink: 0 }}><Icon name="x" size={18} /></span>
+                  <span style={{ color: 'var(--text-2)', fontSize: 15 }}>{item}</span>
+                </div>
+              ))}
             </div>
-          </div>
+          </Card>
+          <Card accentTop padding="var(--space-32)">
+            <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 'var(--space-24)' }}>I Lease Motors</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
+              {ILM_PROS.map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-16)' }}>
+                  <span style={{ color: 'var(--gold)', flexShrink: 0 }}><Icon name="check" size={18} /></span>
+                  <span style={{ color: 'var(--text-1)', fontSize: 15 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
       </div>
     </section>
@@ -227,7 +245,7 @@ function Home({ go }) {
       <TrustBar />
       <HowPreview go={go} />
       <ServicesPreview go={go} />
-      <OwnerStrip />
+      <ComparisonStrip />
       <CTABand go={go} />
     </>
   );
