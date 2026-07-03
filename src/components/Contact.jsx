@@ -10,8 +10,51 @@ const DETAILS = [
   ['clock', 'Hours', 'Mon–Sat 9am–6pm · Sun closed', null],
 ];
 
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    interest: 'New car leasing',
+    timeframe: 'As soon as possible',
+    message: '',
+  });
+
+  function set(field) {
+    return (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/send-quote-request`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        setError(data.error || 'Something went wrong. Please try again or call us directly.');
+        return;
+      }
+      setSent(true);
+    } catch {
+      setError('Network error. Please try again or call (718) 290-3821.');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <>
@@ -57,32 +100,37 @@ function Contact() {
                   <span style={{ display: 'inline-flex', width: 64, height: 64, alignItems: 'center', justifyContent: 'center', background: 'var(--gold)', color: 'var(--black-pure)' }}><Icon name="check" size={32} /></span>
                   <h3 style={{ fontSize: 26 }}>Request received.</h3>
                   <p style={{ color: 'var(--text-2)', maxWidth: 320 }}>Thanks — we'll be in touch shortly. Need it sooner? Call (718) 290-3821.</p>
-                  <Button variant="secondary" onClick={() => setSent(false)}>Send another</Button>
+                  <Button variant="secondary" onClick={() => { setSent(false); setForm({ name: '', phone: '', email: '', interest: 'New car leasing', timeframe: 'As soon as possible', message: '' }); }}>Send another</Button>
                 </div>
               ) : (
-                <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
                   <h3 style={{ fontSize: 24 }}>Request a free quote</h3>
                   <div className="ilm-form-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-16)' }}>
-                    <Input label="Full Name" placeholder="Jane Driver" required />
-                    <Input label="Phone" type="tel" placeholder="(718) 000-0000" required />
+                    <Input label="Full Name" placeholder="Jane Driver" required value={form.name} onChange={set('name')} />
+                    <Input label="Phone" type="tel" placeholder="(718) 000-0000" required value={form.phone} onChange={set('phone')} />
                   </div>
-                  <Input label="Email" type="email" placeholder="you@email.com" />
+                  <Input label="Email" type="email" placeholder="you@email.com" value={form.email} onChange={set('email')} />
                   <div className="ilm-form-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-16)' }}>
-                    <Select label="I'm interested in">
+                    <Select label="I'm interested in" value={form.interest} onChange={set('interest')}>
                       <option>New car leasing</option>
                       <option>Vehicle financing</option>
                       <option>Early lease exit</option>
                       <option>Fleet services</option>
                     </Select>
-                    <Select label="Timeframe">
+                    <Select label="Timeframe" value={form.timeframe} onChange={set('timeframe')}>
                       <option>As soon as possible</option>
                       <option>Within a month</option>
                       <option>1–3 months</option>
                       <option>Just exploring</option>
                     </Select>
                   </div>
-                  <Textarea label="What are you looking for?" rows={4} placeholder="e.g. 2024 SUV, around $500/mo, ready in a few weeks…" />
-                  <Button variant="primary" size="lg" fullWidth>Send Request</Button>
+                  <Textarea label="What are you looking for?" rows={4} placeholder="e.g. 2024 SUV, around $500/mo, ready in a few weeks…" value={form.message} onChange={set('message')} />
+                  {error && (
+                    <p style={{ fontSize: 13, color: '#e05252', margin: 0, padding: '12px 16px', background: 'rgba(224,82,82,0.08)', border: '1px solid rgba(224,82,82,0.2)' }}>{error}</p>
+                  )}
+                  <Button variant="primary" size="lg" fullWidth disabled={loading}>
+                    {loading ? 'Sending…' : 'Send Request'}
+                  </Button>
                   <p style={{ fontSize: 13, color: 'var(--text-3)', textAlign: 'center', margin: 0 }}>No spam. We only use your details to prepare your quote.</p>
                 </form>
               )}
