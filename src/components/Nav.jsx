@@ -31,7 +31,7 @@ function Nav({ page, go, scrolled }) {
           height: 76,
         }}>
           <a onClick={() => go('home')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <img src="https://res.cloudinary.com/dsnifbbrw/image/upload/v1783116584/ilease_motors_logo_no_tagline_translucent_3x1_rcaas9.png" alt="I Lease Motors" style={{ height: 48, width: 'auto' }} />
+            <img src="https://res.cloudinary.com/dsnifbbrw/image/upload/v1783116584/ilease_motors_logo_no_tagline_translucent_3x1_rcaas9.png" alt="I Lease Motors" style={{ height: 62, width: 'auto' }} />
           </a>
 
           <nav className="ilm-desktop-nav" style={{ display: 'flex', gap: 'var(--space-32)', marginLeft: 'var(--space-24)' }}>
@@ -84,7 +84,7 @@ function Nav({ page, go, scrolled }) {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 28 }}>
-          <img src="https://res.cloudinary.com/dsnifbbrw/image/upload/v1783116584/ilease_motors_logo_no_tagline_translucent_3x1_rcaas9.png" alt="I Lease Motors" style={{ height: 40 }} />
+          <img src="https://res.cloudinary.com/dsnifbbrw/image/upload/v1783116584/ilease_motors_logo_no_tagline_translucent_3x1_rcaas9.png" alt="I Lease Motors" style={{ height: 51 }} />
           <button onClick={() => setOpen(false)} aria-label="Close menu"
             style={{ background: 'transparent', border: 0, color: 'var(--text-1)', cursor: 'pointer' }}>
             <Icon name="x" size={26} />

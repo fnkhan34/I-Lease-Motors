@@ -23,7 +23,7 @@ function Footer({ go }) {
       <div className="ilm-container" style={{ paddingBlock: 'var(--space-56)' }}>
         <div className="ilm-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1.2fr', gap: 'var(--space-40)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', maxWidth: 300 }}>
-            <img src="https://res.cloudinary.com/dsnifbbrw/image/upload/v1783108900/ilease_motors_logo_translucent_mrxinh.png" alt="I Lease Motors" style={{ height: 48, width: 'auto', alignSelf: 'flex-start' }} />
+            <img src="https://res.cloudinary.com/dsnifbbrw/image/upload/v1783116584/ilease_motors_logo_no_tagline_translucent_3x1_rcaas9.png" alt="I Lease Motors" style={{ height: 62, width: 'auto', alignSelf: 'flex-start' }} />
             <p style={{ color: 'var(--text-2)', fontSize: 14, margin: 0 }}>
               A licensed auto broker in Jamaica, Queens. We work for the buyer — sourcing, negotiating, and delivering any make or model.
             </p>
