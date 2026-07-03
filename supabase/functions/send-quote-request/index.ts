@@ -99,7 +99,7 @@ Deno.serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "I Lease Motors <onboarding@resend.dev>",
+        from: "I Lease Motors <leads@faiz-ai.tech>",
         to: ["ileasemotors@gmail.com"],
         subject: `New Quote Request from ${name}`,
         html,
