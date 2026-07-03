@@ -27,12 +27,6 @@ function Footer({ go }) {
             <p style={{ color: 'var(--text-2)', fontSize: 14, margin: 0 }}>
               A licensed auto broker in Jamaica, Queens. We work for the buyer — sourcing, negotiating, and delivering any make or model.
             </p>
-            <div style={{
-              border: '1px dashed var(--line-strong)', padding: '8px 12px',
-              fontSize: 12, color: 'var(--text-3)', letterSpacing: '0.04em',
-            }}>
-              NY Broker License #<span style={{ color: 'var(--text-2)' }}>[ placeholder — add license no. ]</span>
-            </div>
           </div>
           {col('Company', [['Home', 'home'], ['How It Works', 'how'], ['Why Us', 'why'], ['Reviews', 'reviews']])}
           {col('Services', [['New Car Leasing', 'services'], ['Vehicle Financing', 'services'], ['Early Lease Exit', 'services'], ['Fleet Services', 'services']])}
