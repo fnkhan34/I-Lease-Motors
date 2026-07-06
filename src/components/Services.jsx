@@ -5,21 +5,25 @@ import { PageHero } from './Parts.jsx';
 const SVCS = [
   {
     id: 'leasing', icon: 'car', tag: 'Most Popular', t: 'New Car Leasing',
+    img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
     d: "The core of what we do. Tell us the vehicle and we source it from dealer-direct channels, negotiate the lease, and deliver it. Any make, any model — luxury, family, electric, or work truck.",
     bullets: ['All makes & models', 'Dealer-direct lease pricing', 'Custom-ordered or in-stock', 'Delivered to your door'],
   },
   {
     id: 'financing', icon: 'dollar', tag: null, t: 'Vehicle Financing',
+    img: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80',
     d: 'Prefer to buy? We arrange financing through our lender network to find a competitive rate and term that fits your budget — without the finance-office pressure.',
     bullets: ['Competitive APR options', 'New & pre-owned', 'Trade-in coordination', 'Clear, itemized terms'],
   },
   {
     id: 'exit', icon: 'key', tag: null, t: 'Early Lease Exit',
+    img: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80',
     d: "Stuck in a lease you want out of? We assess your situation and find the cleanest, lowest-cost way out — whether that's a transfer, buyout, or rolling into your next vehicle.",
     bullets: ['Lease transfer & buyout', 'Penalty review', 'Roll into a new lease', 'Straight answers on cost'],
   },
   {
     id: 'fleet', icon: 'users', tag: null, t: 'Fleet Services',
+    img: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
     d: 'Running a business? We handle multiple vehicles as one simple order — sourcing, pricing, and delivery coordinated so your team stays on the road.',
     bullets: ['Multi-vehicle orders', 'Business pricing', 'Mixed makes & models', 'Single point of contact'],
   },
@@ -42,13 +46,17 @@ function Services({ go }) {
             }}>
               <div style={{
                 order: i % 2 ? 2 : 1,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: 'var(--surface-2)', minHeight: 240, position: 'relative',
+                position: 'relative', minHeight: 280, overflow: 'hidden',
                 borderRight: i % 2 ? 'none' : '1px solid var(--border-1)',
                 borderLeft: i % 2 ? '1px solid var(--border-1)' : 'none',
               }}>
-                <span style={{ color: 'var(--gold)', opacity: 0.9 }}><Icon name={s.icon} size={72} strokeWidth={1.25} /></span>
-                <span style={{ position: 'absolute', top: 16, left: 16, fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, color: 'var(--line-strong)' }}>0{i + 1}</span>
+                <img
+                  src={s.img}
+                  alt={s.t}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)' }} />
+                <span style={{ position: 'absolute', top: 16, left: 16, fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, color: 'rgba(255,255,255,0.85)' }}>0{i + 1}</span>
               </div>
               <div style={{ order: i % 2 ? 1 : 2, padding: 'var(--space-40)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-16)' }}>
