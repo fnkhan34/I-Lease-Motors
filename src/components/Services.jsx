@@ -11,7 +11,7 @@ const SVCS = [
   },
   {
     id: 'financing', icon: 'dollar', tag: null, t: 'Vehicle Financing',
-    img: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80',
+    img: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80',
     d: 'Prefer to buy? We arrange financing through our lender network to find a competitive rate and term that fits your budget — without the finance-office pressure.',
     bullets: ['Competitive APR options', 'New & pre-owned', 'Trade-in coordination', 'Clear, itemized terms'],
   },
@@ -23,7 +23,7 @@ const SVCS = [
   },
   {
     id: 'fleet', icon: 'users', tag: null, t: 'Fleet Services',
-    img: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&q=80',
+    img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80',
     d: 'Running a business? We handle multiple vehicles as one simple order — sourcing, pricing, and delivery coordinated so your team stays on the road.',
     bullets: ['Multi-vehicle orders', 'Business pricing', 'Mixed makes & models', 'Single point of contact'],
   },
