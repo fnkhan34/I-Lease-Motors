@@ -155,6 +155,7 @@ function Card({
   accentTop = false,
   padding = 'var(--space-32)',
   style = {},
+  className = '',
   ...rest
 }) {
   const base = {
@@ -187,7 +188,7 @@ function Card({
     if (bar) bar.style.transform = 'scaleX(0)';
   };
   return /*#__PURE__*/React.createElement("div", _extends({
-    className: "ilm-card",
+    className: ['ilm-card', className].filter(Boolean).join(' '),
     style: base,
     onMouseEnter: onEnter,
     onMouseLeave: onLeave

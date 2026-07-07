@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button, Card, Icon, Eyebrow } from './DesignSystem.js';
 import { SectionHead } from './Parts.jsx';
+import { useReveal } from './useReveal.js';
 
 function HomeHero({ go }) {
   const videoRef = useRef(null);
@@ -115,9 +116,10 @@ const STEPS = [
 ];
 
 function HowPreview({ go }) {
+  const ref = useReveal();
   return (
     <section className="ilm-section">
-      <div className="ilm-container">
+      <div ref={ref} className="ilm-container">
         <SectionHead
           eyebrow="How It Works"
           title="Three steps to your next car"
@@ -125,7 +127,7 @@ function HowPreview({ go }) {
         />
         <div className="ilm-3col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-24)' }}>
           {STEPS.map(([n, t, d]) => (
-            <Card key={n} interactive accentTop padding="var(--space-32)">
+            <Card key={n} interactive accentTop padding="var(--space-32)" className="reveal">
               <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 44, color: 'var(--gold)', lineHeight: 1 }}>{n}</div>
               <h3 style={{ fontSize: 22, marginTop: 'var(--space-16)' }}>{t}</h3>
               <p style={{ color: 'var(--text-2)', marginTop: 'var(--space-8)' }}>{d}</p>
@@ -148,13 +150,14 @@ const SERVICES = [
 ];
 
 function ServicesPreview({ go }) {
+  const ref = useReveal();
   return (
     <section className="ilm-section" style={{ background: 'var(--surface-1)', borderBlock: '1px solid var(--border-1)' }}>
-      <div className="ilm-container">
+      <div ref={ref} className="ilm-container">
         <SectionHead eyebrow="What We Do" title="Full-service, start to finish" />
         <div className="ilm-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-16)' }}>
           {SERVICES.map(([icon, t, d]) => (
-            <Card key={t} interactive padding="var(--space-32)" style={{ background: 'var(--surface-2)', display: 'flex', gap: 'var(--space-24)' }}>
+            <Card key={t} interactive padding="var(--space-32)" className="reveal" style={{ background: 'var(--surface-2)', display: 'flex', gap: 'var(--space-24)' }}>
               <span style={{ color: 'var(--gold)', flexShrink: 0 }}><Icon name={icon} size={30} /></span>
               <div>
                 <h3 style={{ fontSize: 20 }}>{t}</h3>
@@ -186,16 +189,17 @@ const ILM_PROS = [
 ];
 
 function ComparisonStrip() {
+  const ref = useReveal();
   return (
     <section className="ilm-section">
-      <div className="ilm-container">
+      <div ref={ref} className="ilm-container">
         <SectionHead
           eyebrow="The Difference"
           title="Whose side is your dealer really on?"
           align="center"
         />
         <div className="ilm-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-24)' }}>
-          <Card padding="var(--space-32)">
+          <Card padding="var(--space-32)" className="reveal">
             <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: 'var(--space-24)' }}>The Dealership</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
               {DEALERSHIP_CONS.map((item) => (
@@ -206,7 +210,7 @@ function ComparisonStrip() {
               ))}
             </div>
           </Card>
-          <Card accentTop padding="var(--space-32)">
+          <Card accentTop padding="var(--space-32)" className="reveal">
             <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 'var(--space-24)' }}>I Lease Motors</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
               {ILM_PROS.map((item) => (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Nav from './components/Nav.jsx';
 import { Footer, StickyCTA } from './components/Footer.jsx';
 import Home from './components/Home.jsx';
@@ -23,7 +23,10 @@ const PAGES = {
 
 function App() {
   const [page, setPage] = useState('home');
+  const [visiblePage, setVisiblePage] = useState('home');
+  const [fadeState, setFadeState] = useState('in'); // 'in' | 'out'
   const [scrolled, setScrolled] = useState(false);
+  const pendingPage = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -33,16 +36,30 @@ function App() {
   }, []);
 
   const go = (p) => {
-    setPage(p);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    if (p === page) return;
+    pendingPage.current = p;
+    setFadeState('out');
   };
 
-  const Current = PAGES[page] || Home;
+  useEffect(() => {
+    if (fadeState === 'out') {
+      const t = setTimeout(() => {
+        const next = pendingPage.current;
+        setPage(next);
+        setVisiblePage(next);
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        setFadeState('in');
+      }, 200);
+      return () => clearTimeout(t);
+    }
+  }, [fadeState]);
+
+  const Current = PAGES[visiblePage] || Home;
 
   return (
     <>
       <Nav page={page} go={go} scrolled={scrolled} />
-      <main style={{ paddingBottom: 0 }}>
+      <main style={{ paddingBottom: 0 }} className={`page-transition page-transition--${fadeState}`}>
         <Current go={go} />
       </main>
       <Footer go={go} />

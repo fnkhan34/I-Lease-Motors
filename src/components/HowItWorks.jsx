@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Icon } from './DesignSystem.js';
 import { PageHero } from './Parts.jsx';
+import { useReveal } from './useReveal.js';
 
 const HW_STEPS = [
   {
@@ -21,6 +22,7 @@ const HW_STEPS = [
 ];
 
 function HowItWorks({ go }) {
+  const stepsRef = useReveal();
   return (
     <>
       <PageHero
@@ -29,9 +31,9 @@ function HowItWorks({ go }) {
         sub="A broker works for you, not the dealership. Here is exactly how we get you into the right car — without the showroom runaround."
       />
       <section className="ilm-section">
-        <div className="ilm-container" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
+        <div ref={stepsRef} className="ilm-container" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
           {HW_STEPS.map((s) => (
-            <div key={s.n} className="ilm-step-row" style={{
+            <div key={s.n} className="ilm-step-row reveal" style={{
               display: 'grid', gridTemplateColumns: '120px 1fr', gap: 'var(--space-40)',
               padding: 'var(--space-40)', background: 'var(--surface-1)', border: '1px solid var(--border-1)',
               alignItems: 'start',

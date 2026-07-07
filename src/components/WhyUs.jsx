@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Icon, Card } from './DesignSystem.js';
 import { PageHero } from './Parts.jsx';
+import { useReveal } from './useReveal.js';
 
 const POINTS = [
   {
@@ -29,6 +30,8 @@ const STATS = [
 ];
 
 function WhyUs({ go }) {
+  const cardsRef = useReveal();
+  const statsRef = useReveal({ stagger: 100 });
   return (
     <>
       <PageHero
@@ -38,9 +41,9 @@ function WhyUs({ go }) {
       />
       <section className="ilm-section">
         <div className="ilm-container">
-          <div className="ilm-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-24)' }}>
+          <div ref={cardsRef} className="ilm-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-24)' }}>
             {POINTS.map((p, i) => (
-              <Card key={p.t} interactive accentTop padding="var(--space-40)" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
+              <Card key={p.t} interactive accentTop padding="var(--space-40)" className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-16)' }}>
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -57,9 +60,9 @@ function WhyUs({ go }) {
       </section>
       <section style={{ background: 'var(--surface-1)', borderBlock: '1px solid var(--border-1)' }}>
         <div className="ilm-container" style={{ paddingBlock: 'var(--space-56)' }}>
-          <div className="ilm-trust-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-24)' }}>
+          <div ref={statsRef} className="ilm-trust-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-24)' }}>
             {STATS.map(([big, small], i) => (
-              <div key={small} style={{
+              <div key={small} className="reveal" style={{
                 textAlign: 'center', paddingInline: 'var(--space-16)',
                 borderLeft: i === 0 ? 'none' : '1px solid var(--border-1)',
               }}>

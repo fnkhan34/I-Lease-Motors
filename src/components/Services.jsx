@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Icon, Badge } from './DesignSystem.js';
 import { PageHero } from './Parts.jsx';
+import { useReveal } from './useReveal.js';
 
 const SVCS = [
   {
@@ -30,6 +31,7 @@ const SVCS = [
 ];
 
 function Services({ go }) {
+  const listRef = useReveal({ stagger: 120 });
   return (
     <>
       <PageHero
@@ -38,9 +40,9 @@ function Services({ go }) {
         sub="Four ways we put dealer-direct pricing and a real negotiator in your corner."
       />
       <section className="ilm-section">
-        <div className="ilm-container" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
+        <div ref={listRef} className="ilm-container" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
           {SVCS.map((s, i) => (
-            <div key={s.id} className="ilm-svc-row" style={{
+            <div key={s.id} className="ilm-svc-row reveal" style={{
               display: 'grid', gridTemplateColumns: i % 2 ? '1fr 0.9fr' : '0.9fr 1fr', gap: 'var(--space-40)',
               background: 'var(--surface-1)', border: '1px solid var(--border-1)', alignItems: 'stretch',
             }}>
