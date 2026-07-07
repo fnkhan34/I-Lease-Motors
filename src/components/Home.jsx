@@ -10,7 +10,7 @@ function HomeHero({ go }) {
     if (window.innerWidth > 1023) return;
     const timer = setTimeout(() => {
       videoRef.current?.play().catch(() => {});
-    }, 100);
+    }, 150);
     return () => clearTimeout(timer);
   }, []);
 
