@@ -50,7 +50,7 @@ Deno.serve(async (req: Request) => {
 
     const html = `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#111;">
-        <div style="background:#c9a84c;padding:24px 32px;">
+        <div style="background:#c4c4c2;padding:24px 32px;">
           <h1 style="margin:0;color:#000;font-size:22px;letter-spacing:0.05em;">NEW QUOTE REQUEST</h1>
           <p style="margin:4px 0 0;color:#000;font-size:14px;opacity:0.7;">I Lease Motors — ileasemotors.com</p>
         </div>
@@ -62,12 +62,12 @@ Deno.serve(async (req: Request) => {
             </tr>
             <tr>
               <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Phone</td>
-              <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:16px;"><a href="tel:${phone}" style="color:#c9a84c;text-decoration:none;">${phone}</a></td>
+              <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:16px;"><a href="tel:${phone}" style="color:#8a8a87;text-decoration:none;">${phone}</a></td>
             </tr>
             ${email ? `
             <tr>
               <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Email</td>
-              <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:16px;"><a href="mailto:${email}" style="color:#c9a84c;text-decoration:none;">${email}</a></td>
+              <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:16px;"><a href="mailto:${email}" style="color:#8a8a87;text-decoration:none;">${email}</a></td>
             </tr>` : ""}
             ${interest ? `
             <tr>
