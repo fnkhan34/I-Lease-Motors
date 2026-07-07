@@ -230,6 +230,9 @@ html { scroll-behavior: smooth; }
   main { padding-bottom: 60px; }
 }
 
+video::-webkit-media-controls { display: none !important; }
+video::-webkit-media-controls-start-playback-button { display: none !important; }
+
 @media (max-width: 576px) {
   .hero-scrim {
     background: linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.6) 75%, rgba(10,10,10,0.3) 100%) !important;

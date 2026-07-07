@@ -7,11 +7,13 @@ function HomeHero({ go }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    if (window.innerWidth > 1023) return;
-    const timer = setTimeout(() => {
-      videoRef.current?.play().catch(() => {});
-    }, 150);
-    return () => clearTimeout(timer);
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.muted = true;
+    const tryPlay = () => vid.play().catch(() => {});
+    setTimeout(tryPlay, 200);
+    document.addEventListener('touchstart', tryPlay, { once: true });
+    return () => document.removeEventListener('touchstart', tryPlay);
   }, []);
 
   return (
@@ -36,6 +38,7 @@ function HomeHero({ go }) {
         muted
         loop
         playsInline
+        controls={false}
         preload="auto"
         disablePictureInPicture
         x-webkit-airplay="deny"
@@ -47,6 +50,7 @@ function HomeHero({ go }) {
           objectFit: 'cover',
           zIndex: 1,
           pointerEvents: 'none',
+          display: 'block',
         }}
       >
         <source src="https://res.cloudinary.com/dsnifbbrw/video/upload/q_auto/f_auto/v1781480122/5309354-hd_1920_1080_25fps_zairgm.mp4" type="video/mp4" />
