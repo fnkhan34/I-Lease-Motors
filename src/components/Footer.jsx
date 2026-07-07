@@ -7,9 +7,9 @@ function Footer({ go }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
       <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)' }}>{heading}</div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
-        {links.map(([label, id]) => (
-          <a key={label} onClick={id ? () => go(id) : undefined}
-            style={{ cursor: id ? 'pointer' : 'default', color: 'var(--text-2)', fontSize: 14, transition: 'color var(--dur) var(--ease-out)' }}
+        {links.map(([label, page, anchor]) => (
+          <a key={label} onClick={page ? () => go(page, anchor || null) : undefined}
+            style={{ cursor: page ? 'pointer' : 'default', color: 'var(--text-2)', fontSize: 14, transition: 'color var(--dur) var(--ease-out)' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-2)'; }}
           >{label}</a>
@@ -29,7 +29,12 @@ function Footer({ go }) {
             </p>
           </div>
           {col('Company', [['Home', 'home'], ['How It Works', 'how'], ['Why Us', 'why'], ['Reviews', 'reviews']])}
-          {col('Services', [['New Car Leasing', 'services'], ['Vehicle Financing', 'services'], ['Early Lease Exit', 'services'], ['Fleet Services', 'services']])}
+          {col('Services', [
+            ['New Car Leasing',   'services', 'leasing'],
+            ['Vehicle Financing', 'services', 'financing'],
+            ['Early Lease Exit',  'services', 'lease-exit'],
+            ['Fleet Services',    'services', 'fleet'],
+          ])}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
             <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)' }}>Visit / Call</div>
             <a href="tel:7182903821" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-1)', fontWeight: 600 }}>

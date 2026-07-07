@@ -17,7 +17,7 @@ const SVCS = [
     bullets: ['Competitive APR options', 'New & pre-owned', 'Trade-in coordination', 'Clear, itemized terms'],
   },
   {
-    id: 'exit', icon: 'key', tag: null, t: 'Early Lease Exit',
+    id: 'lease-exit', icon: 'key', tag: null, t: 'Early Lease Exit',
     img: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80',
     d: "Stuck in a lease you want out of? We assess your situation and find the cleanest, lowest-cost way out — whether that's a transfer, buyout, or rolling into your next vehicle.",
     bullets: ['Lease transfer & buyout', 'Penalty review', 'Roll into a new lease', 'Straight answers on cost'],
@@ -42,7 +42,7 @@ function Services({ go }) {
       <section className="ilm-section">
         <div ref={listRef} className="ilm-container" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-24)' }}>
           {SVCS.map((s, i) => (
-            <div key={s.id} className="ilm-svc-row reveal" style={{
+            <div key={s.id} id={s.id} className="ilm-svc-row reveal" style={{
               display: 'grid', gridTemplateColumns: i % 2 ? '1fr 0.9fr' : '0.9fr 1fr', gap: 'var(--space-40)',
               background: 'var(--surface-1)', border: '1px solid var(--border-1)', alignItems: 'stretch',
             }}>

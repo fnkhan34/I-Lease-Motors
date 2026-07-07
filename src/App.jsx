@@ -27,6 +27,7 @@ function App() {
   const [fadeState, setFadeState] = useState('in'); // 'in' | 'out'
   const [scrolled, setScrolled] = useState(false);
   const pendingPage = useRef(null);
+  const pendingAnchor = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -35,9 +36,18 @@ function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const go = (p) => {
-    if (p === page) return;
+  const scrollToAnchor = (anchor) => {
+    const el = document.getElementById(anchor);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const go = (p, anchor = null) => {
+    if (p === page) {
+      if (anchor) scrollToAnchor(anchor);
+      return;
+    }
     pendingPage.current = p;
+    pendingAnchor.current = anchor;
     setFadeState('out');
   };
 
@@ -45,9 +55,15 @@ function App() {
     if (fadeState === 'out') {
       const t = setTimeout(() => {
         const next = pendingPage.current;
+        const anchor = pendingAnchor.current;
         setPage(next);
         setVisiblePage(next);
-        window.scrollTo({ top: 0, behavior: 'auto' });
+        if (anchor) {
+          // After render, scroll to anchor
+          requestAnimationFrame(() => requestAnimationFrame(() => scrollToAnchor(anchor)));
+        } else {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        }
         setFadeState('in');
       }, 200);
       return () => clearTimeout(t);
