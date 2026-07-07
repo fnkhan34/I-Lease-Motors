@@ -17,6 +17,7 @@ function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -27,12 +28,26 @@ function Contact() {
   });
 
   function set(field) {
-    return (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
+    return (e) => {
+      if (field === 'phone') setPhoneError('');
+      setForm((f) => ({ ...f, [field]: e.target.value }));
+    };
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     setError('');
+
+    const digits = form.phone.replace(/\D/g, '');
+    if (!form.phone.trim()) {
+      setPhoneError('Phone number is required');
+      return;
+    }
+    if (digits.length !== 10) {
+      setPhoneError('Please enter a valid 10-digit phone number');
+      return;
+    }
+    setPhoneError('');
     setLoading(true);
     try {
       const res = await fetch(`${SUPABASE_URL}/functions/v1/send-quote-request`, {
@@ -107,7 +122,10 @@ function Contact() {
                   <h3 style={{ fontSize: 24 }}>Request a free quote</h3>
                   <div className="ilm-form-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-16)' }}>
                     <Input label="Full Name" placeholder="Jane Driver" required value={form.name} onChange={set('name')} />
-                    <Input label="Phone" type="tel" placeholder="(718) 000-0000" required value={form.phone} onChange={set('phone')} />
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <Input label="Phone" type="tel" placeholder="(718) 000-0000" required value={form.phone} onChange={set('phone')} />
+                      {phoneError && <span style={{ fontSize: 12, color: '#e05252' }}>{phoneError}</span>}
+                    </div>
                   </div>
                   <Input label="Email" type="email" placeholder="you@email.com" value={form.email} onChange={set('email')} />
                   <div className="ilm-form-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-16)' }}>
