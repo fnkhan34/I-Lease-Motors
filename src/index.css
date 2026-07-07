@@ -187,6 +187,11 @@ html { scroll-behavior: smooth; }
   opacity: 1;
 }
 
+/* Navbar scroll offset for anchor targets */
+#leasing, #financing, #lease-exit, #fleet {
+  scroll-margin-top: 80px;
+}
+
 /* Scroll-reveal */
 .reveal {
   opacity: 0;
