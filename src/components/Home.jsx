@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button, Card, Icon, Eyebrow } from './DesignSystem.js';
 import { SectionHead } from './Parts.jsx';
 
 function HomeHero({ go }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (window.innerWidth > 1023) return;
+    const timer = setTimeout(() => {
+      videoRef.current?.play().catch(() => {});
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section style={{
       position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center',
@@ -19,6 +29,7 @@ function HomeHero({ go }) {
 
       {/* Background video */}
       <video
+        ref={videoRef}
         aria-hidden="true"
         autoPlay
         muted
