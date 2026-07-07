@@ -6,13 +6,13 @@ function Footer({ go }) {
   const col = (heading, links) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
       <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)' }}>{heading}</div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', alignItems: 'flex-start' }}>
         {links.map(([label, page, anchor]) => (
-          <a key={label} onClick={page ? () => go(page, anchor || null) : undefined}
-            style={{ cursor: page ? 'pointer' : 'default', color: 'var(--text-2)', fontSize: 14, transition: 'color var(--dur) var(--ease-out)' }}
+          <button key={label} onClick={page ? () => go(page, anchor || null) : undefined}
+            style={{ cursor: page ? 'pointer' : 'default', color: 'var(--text-2)', fontSize: 14, transition: 'color var(--dur) var(--ease-out)', background: 'none', border: 'none', padding: 0, fontFamily: 'var(--font-body)', width: 'fit-content', textAlign: 'left' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-2)'; }}
-          >{label}</a>
+          >{label}</button>
         ))}
       </div>
     </div>
