@@ -234,4 +234,7 @@ html { scroll-behavior: smooth; }
   .hero-scrim {
     background: linear-gradient(90deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.6) 75%, rgba(10,10,10,0.3) 100%) !important;
   }
+  .ilm-footer-bottom {
+    padding-bottom: 90px !important;
+  }
 }
