@@ -70,6 +70,16 @@ function HomeHero({ go }) {
         }}>
           Skip the Dealership.<br /><span style={{ color: 'var(--gold)' }}>We Get Your Car.</span>
         </h1>
+        <p style={{
+          fontSize: 'clamp(14px, 1.6vw, 16px)',
+          textTransform: 'uppercase',
+          letterSpacing: '0.2em',
+          color: '#a0a0a0',
+          fontWeight: 500,
+          marginTop: 'var(--space-16)',
+        }}>
+          Any Car. Any Time. Anywhere.
+        </p>
         <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-1)', maxWidth: 540, marginTop: 'var(--space-24)' }}>
           We work for the buyer, not the lot. Tell us the car you want — we source it,
           negotiate the price, and deliver it to your door.
